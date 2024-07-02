@@ -1,79 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Página Principal</a></li>
-                <li><a href="about.html">Página 2</a></li>
-                <li><a href="contact.html">Página 3</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="content">
-                <!-- TradingView Widget BEGIN -->
-                <div class="tradingview-widget-container">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
-                    {
-                    "width": 550,
-                    "height": 550,
-                    "symbolsGroups": [
-                    {
-                        "name": "Forex",
-                        "originalName": "Forex",
-                        "symbols": [
-                        {
-                            "name": "USDBRL",
-                            "displayName": "USD to BRL"
-                        },
-                        {
-                            "name": "FX:GBPUSD",
-                            "displayName": "GBP to USD"
-                        },
-                        {
-                            "name": "FX:USDJPY",
-                            "displayName": "USD to JPY"
-                        },
-                        {
-                            "name": "FX:USDCHF",
-                            "displayName": "USD to CHF"
-                        },
-                        {
-                            "name": "FX:AUDUSD",
-                            "displayName": "AUD to USD"
-                        },
-                        {
-                            "name": "FX:USDCAD",
-                            "displayName": "USD to CAD"
-                        }
-                        ],
-                        "symbols2":[
-                            {
-                                "name": "FX:EURUSD",
-                                "displayName": "EUR to USD"
-                            }
-                        ]
-                    }
-                    ],
-                    "showSymbolLogo": true,
-                    "isTransparent": false,
-                    "colorTheme": "dark",
-                    "locale": "br",
-                    "backgroundColor": "#131722"
-                }
-                    </script>
-                </div>
-                <!-- TradingView Widget END -->
-        </section>
-    </main>
-    <script src="js/scripts.js"></script>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Stock Details</title>
+		<link rel="stylesheet" href="css/styles.css" />
+	</head>
+	<body>
+		<header>
+			<a id="site-logo" href="#">TradingVista</a>
+			<input type="search" placeholder="Search..." />
+		</header>
+		<nav id="ticker-tape">Ticker Tape</nav>
+		<main>
+			<section id="symbol-info">Symbol Info</section>
+			<section id="advanced-chart">Advanced Chart</section>
+			<section id="company-profile">Company Profile</section>
+			<section id="fundamental-data">Fundamental Data</section>
+		</main>
+		<footer>
+			<p>
+				This example page is part of a tutorial for integrating TradingView widgets into your website.
+			</p>
+			<p><a href="https://www.tradingview.com/widget-docs/tutorials/build-page/#build-a-page">View the tutorial</a></p>
+		</footer>
+		<script src="js/scripts.js"></script>
+	</body>
 </html>
