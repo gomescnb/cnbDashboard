@@ -1,90 +1,29 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gomes - Site Pessoal</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-        }
-        h1 {
-            margin: 0;
-        }
-        nav {
-            background-color: #444;
-            padding: 10px 0;
-            text-align: center;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-        .content {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Gomes - Site Pessoal</h1>
-    </header>
-    <nav>
-        <a href="#sobre">Sobre</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#contato">Contato</a>
-    </nav>
-    <div class="container">
-        <section id="sobre" class="content">
-            <h2>Sobre Mim</h2>
-            <p>Olá! Meu nome é Gomes e sou apaixonado por programação. Este é o meu site pessoal, onde compartilho um pouco sobre mim e meu trabalho.</p>
-        </section>
-        <section id="portfolio" class="content">
-            <h2>Meu Portfolio</h2>
-            <p>Aqui estão alguns dos meus projetos recentes:</p>
-            <ul>
-                <li>Projeto 1</li>
-                <li>Projeto 2</li>
-                <li>Projeto 3</li>
-            </ul>
-        </section>
-        <section id="contato" class="content">
-            <h2>Contato</h2>
-            <p>Quer entrar em contato comigo? Envie um e-mail para: <a href="mailto:seuemail@example.com">seuemail@example.com</a></p>
-        </section>
-    </div>
-    <footer>
-        &copy; 2024 Gomes - Todos os direitos reservados.
-    </footer>
-</body>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Stock Details</title>
+		<link rel="stylesheet" href="css/styles.css" />
+	</head>
+	<body>
+		<header>
+			<a id="site-logo" href="#">TradingVista</a>
+			<input type="search" placeholder="Search..." />
+		</header>
+		<nav id="ticker-tape">Ticker Tape</nav>
+		<main>
+			<section id="symbol-info">Symbol Info</section>
+			<section id="advanced-chart">Advanced Chart</section>
+			<section id="company-profile">Company Profile</section>
+			<section id="fundamental-data">Fundamental Data</section>
+		</main>
+		<footer>
+			<p>
+				This example page is part of a tutorial for integrating TradingView widgets into your website.
+			</p>
+			<p><a href="https://www.tradingview.com/widget-docs/tutorials/build-page/#build-a-page">View the tutorial</a></p>
+		</footer>
+		<script src="js/scripts.js"></script>
+	</body>
 </html>
