@@ -5,12 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard - Mercado</title>
     <link rel="stylesheet" href="css/styles.css" />
+	<link rel="icon" type="image/png" href="assets/images/logoCNBwhite.png" />
 </head>
 <body class="light-mode">
-    <header>
-        <a id="site-logo">CNB-Dashboard</a>
-        <button class="theme-toggle" id="theme-toggle">☀️</button>
-    </header>        
+	<header style="display: flex; justify-content: space-between; align-items: center;">
+		<a id="site-logo" href="#" style="display: flex; align-items: center; text-decoration: none;">
+			<img src="assets/images/logoCNBwhite.png" alt="Logo" style="height: 50px; margin-right: 8px;">
+			<!-- <span style="vertical-align: middle;">CNB-Dashboard</span> -->
+		</a>
+		<button class="theme-toggle" id="theme-toggle" style="margin-left: auto;">☀️</button>
+		
+	</header>
+	
+	
+		  
     <nav id="ticker-tape">
         <!-- TradingView Widget BEGIN -->
         <div id="ticker-tape-widget" class="tradingview-widget-container">
