@@ -85,8 +85,7 @@ main {
 }
 
 .skeleton,
-#ticker-tape,
-#symbol-info,
+/* #symbol-info, */
 #advanced-chart,
 #company-profile,
 #fundamental-data {
