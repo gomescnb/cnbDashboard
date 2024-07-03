@@ -39,7 +39,7 @@ header #site-logo {
     font-weight: 600;
     font-size: 32px;
     padding: 16px;
-    background: var(--18-promo-gradient-02, linear-gradient(90deg, #00bce5 0%, #2962ff 100%));
+    background: var(--18-promo-gradient-02, linear-gradient(90deg, #29cc6d 0%, #1a8d3c 100%));
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
@@ -79,16 +79,21 @@ main {
 
 #symbol-info,
 #advanced-chart,
-#company-profile,
-#fundamental-data {
+#fundamental-data
+ {
     grid-column: span 1;
 }
 
-.skeleton,
+#company-profile {
+    grid-column: span 2;
+}
+
+.skeleton
 /* #symbol-info, */
 /* #advanced-chart, */
-#company-profile,
-#fundamental-data {
+/* #company-profile, */
+/* #fundamental-data  */
+{
     text-align: center;
     padding: 16px;
     font-size: 24px;
