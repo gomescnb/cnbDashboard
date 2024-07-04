@@ -37,7 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         originalName: "Economics",
                         symbols: [
                             { name: "ECONOMICS:BRINTR", displayName: "Taxa SELIC" },
-                            { name: "ECONOMICS:USINTR", displayName: "Taxa de Juros EUA" }
+                            { name: "ECONOMICS:USINTR", displayName: "Taxa de Juros EUA" },
+                            { name: "ECONOMICS:USINTR", displayName: "Taxa de Juros RAMON" }
                         ]
                     },
                     {
