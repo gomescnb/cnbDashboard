@@ -12,12 +12,15 @@
 body {
     margin: 0;
     padding: 0;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     background: var(--color-bg-light);
     color: var(--color-text-light);
-}
+    overflow-x: hidden;
+    /* height: 100vw; */
+    }
 
 body.dark-mode {
     background: var(--color-bg-dark);
@@ -40,7 +43,7 @@ footer.dark-mode {
 
 header {
     justify-content: space-between;
-    padding: 0 var(--gap-size);
+    padding: 0;
     gap: calc(var(--gap-size) * 2);
     box-shadow: rgba(0, 0, 0, 0.05) 0 2px 6px 0;
     flex-direction: row;
@@ -62,6 +65,8 @@ footer {
     margin-top: var(--gap-size);
     border-top: solid 2px rgba(0, 0, 0, 0.1);
     justify-content: center;
+    text-align: center;
+    align-self: flex-end;
 }
 
 footer p {
@@ -76,16 +81,19 @@ footer.dark-mode p {
 
 main {
     display: grid;
-    width: 100%;
-    padding: 0 calc(var(--gap-size) * 0.5);
-    max-width: 1920px;
+    width: 100vw;
+    padding: 0;
+    max-width: 97vw;
     grid-template-columns: 1fr 1fr;
     grid-gap: var(--gap-size);
+    /* justify-items: center; */
+    /* justify-items:space-evenly; */
+    align-items: center;
 }
 
 .theme-toggle {
     position: absolute;
-    top: 10px;
+    top: 23px;
     right: 10px;
     width: 40px;
     height: 40px;
@@ -108,11 +116,16 @@ body.dark-mode .theme-toggle {
     grid-column: span 1;
 }
 
+#advanced-chart {
+    padding-right: 1vw;
+}
+
 #company-profile {
     grid-column: span 2;
 }
 
-.skeleton {
+.skeleton
+ {
     text-align: center;
     padding: 16px;
     font-size: 24px;
@@ -126,18 +139,9 @@ body.dark-mode .theme-toggle {
     height: 75px;
 }
 
-#symbol-info {
-    height: 500px;
-}
-
-#advanced-chart {
-    height: 500px;
-}
-
-#company-profile {
-    height: 500px;
-}
-
+#symbol-info,
+#advanced-chart,
+#company-profile,
 #fundamental-data {
     height: 500px;
 }
