@@ -12,7 +12,7 @@
 body {
     margin: 0;
     padding: 0;
-    width: 100vw;
+    width: 98.5vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -66,7 +66,11 @@ footer {
     border-top: solid 2px rgba(0, 0, 0, 0.1);
     justify-content: center;
     text-align: center;
-    align-self: flex-end;
+    /* pin footer to end of page: */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
 }
 
 footer p {
@@ -81,9 +85,9 @@ footer.dark-mode p {
 
 main {
     display: grid;
-    width: 100vw;
+    width: 100%;
     padding: 0;
-    max-width: 97vw;
+    /* max-width: 97vw; */
     grid-template-columns: 1fr 1fr;
     grid-gap: var(--gap-size);
     /* justify-items: center; */
@@ -117,7 +121,7 @@ body.dark-mode .theme-toggle {
 }
 
 #advanced-chart {
-    padding-right: 1vw;
+    /* padding-right: 1vw; */
 }
 
 #company-profile {
