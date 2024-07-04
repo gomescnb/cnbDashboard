@@ -40,6 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             { name: "FRED:SOFR", displayName: "SOFR" },
                             { name: "ECONOMICS:BRINTR", displayName: "Taxa SELIC" },                            
                             { name: "ECONOMICS:BRIRYY", displayName: "IPCA" },
+                            { name: "ECONOMICS:BRCPI", displayName: "INPC" },
+                            
                         ]
                     },
                     {
