@@ -12,23 +12,21 @@
 body {
     margin: 0;
     padding: 0;
-    width: 98.5vw;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     background: var(--color-bg-light);
     color: var(--color-text-light);
     overflow-x: hidden;
-    /* height: 100vw; */
-    }
+}
 
 body.dark-mode {
     background: var(--color-bg-dark);
     color: var(--color-text-dark);
 }
 
-header,
-footer {
+header, footer {
     display: flex;
     width: 100%;
     align-items: center;
@@ -36,8 +34,7 @@ footer {
     gap: 12px;
 }
 
-header.dark-mode,
-footer.dark-mode {
+header.dark-mode, footer.dark-mode {
     background: var(--color-header-footer-dark);
 }
 
@@ -66,11 +63,10 @@ footer {
     border-top: solid 2px rgba(0, 0, 0, 0.1);
     justify-content: center;
     text-align: center;
-    /* pin footer to end of page: */
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
-
+    z-index: 9999999;
 }
 
 footer p {
@@ -85,14 +81,12 @@ footer.dark-mode p {
 
 main {
     display: grid;
-    width: 100%;
+    width: 98.5%;
     padding: 0;
-    /* max-width: 97vw; */
     grid-template-columns: 1fr 1fr;
     grid-gap: var(--gap-size);
-    /* justify-items: center; */
-    /* justify-items:space-evenly; */
     align-items: center;
+    height: calc(100% - 74px);
 }
 
 .theme-toggle {
@@ -114,22 +108,15 @@ body.dark-mode .theme-toggle {
     color: #fff;
 }
 
-#symbol-info,
-#advanced-chart,
-#fundamental-data {
+#symbol-info, #advanced-chart, #fundamental-data {
     grid-column: span 1;
-}
-
-#advanced-chart {
-    /* padding-right: 1vw; */
 }
 
 #company-profile {
     grid-column: span 2;
 }
 
-.skeleton
- {
+.skeleton {
     text-align: center;
     padding: 16px;
     font-size: 24px;
@@ -138,24 +125,54 @@ body.dark-mode .theme-toggle {
 }
 
 #ticker-tape {
-    width: 100%;
+    width: 98.5%;
     margin-bottom: var(--gap-size);
-    height: 75px;
 }
 
-#symbol-info,
-#advanced-chart,
-#company-profile,
-#fundamental-data {
+#symbol-info, #advanced-chart, #company-profile, #fundamental-data {
     height: 500px;
 }
 
 @media (max-width: 800px) {
-    main > section,
-    #symbol-info,
-    #advanced-chart,
-    #company-profile,
-    #fundamental-data {
+    main > section, #symbol-info, #advanced-chart, #company-profile, #fundamental-data {
         grid-column: span 2;
     }
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 10px;
+    padding-left: 2%;
+    margin-bottom: var(--gap-size);
+    
+
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    width: 270px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    color: var(--color-text-light);
+    align-self: flex-start;
+}
+
+body.dark-mode .card {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-dark);
+}
+
+.card h2 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.card p {
+    margin: 10px 0;
 }

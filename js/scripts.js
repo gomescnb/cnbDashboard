@@ -1,6 +1,81 @@
+// Function to fetch data from the API
+async function fetchData(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return null;
+    }
+}
+
+async function fetchDataIGPM() {
+    return await fetchData('https://api.bcb.gov.br/dados/serie/bcdata.sgs.189/dados/ultimos/?formato=json');
+}
+
+async function fetchDataCDI() {
+    return await fetchData('https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados/ultimos/?formato=json');
+}
+
+async function fetchDataCDIAnual() {
+    return await fetchData('https://api.bcb.gov.br/dados/serie/bcdata.sgs.4389/dados/ultimos/?formato=json');
+}
+
+function createCard(titleText, bodyText) {
+    const card = document.createElement('div');
+    card.classList.add('card');
+
+    const title = document.createElement('h2');
+    title.textContent = titleText;
+
+    const body = document.createElement('p');
+    body.textContent = bodyText;
+
+    card.appendChild(title);
+    card.appendChild(body);
+
+    return card;
+}
+
+async function renderData(fetchDataFunction, titleText, containerSelector) {
+    const container = document.querySelector(containerSelector);
+    const data = await fetchDataFunction();
+
+    if (!data) {
+        return;
+    }
+
+    data.forEach(item => {
+        const bodyText = `Último valor: ${parseFloat(item.valor).toFixed(3)}% - (${item.data})`;
+        const card = createCard(titleText, bodyText);
+        container.appendChild(card);
+    });
+}
+
+async function renderDataIGPM() {
+    await renderData(fetchDataIGPM, "IGP-M", '.container');
+}
+
+async function renderDataCDI() {
+    await renderData(fetchDataCDI, "CDI - Diário", '.container');
+}
+
+async function renderDataCDIAnual() {
+    await renderData(fetchDataCDIAnual, "CDI - Anual", '.container');
+}
+
+renderDataIGPM();
+renderDataCDI();
+renderDataCDIAnual();
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
+
 
     const widgets = [
         {
