@@ -1,83 +1,4 @@
-// Function to fetch data from the API
-async function fetchData(url) {
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return await response.json();
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        return null;
-    }
-}
-
-async function fetchDataIGPM() {
-    return await fetchData('https://api.bcb.gov.br/dados/serie/bcdata.sgs.189/dados/ultimos/?formato=json');
-}
-
-async function fetchDataCDI() {
-    return await fetchData('https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados/ultimos/?formato=json');
-}
-
-async function fetchDataCDIAnual() {
-    return await fetchData('https://api.bcb.gov.br/dados/serie/bcdata.sgs.4389/dados/ultimos/?formato=json');
-}
-
-function createCard(titleText, bodyText) {
-    const card = document.createElement('div');
-    card.classList.add('card');
-
-    const title = document.createElement('h2');
-    title.textContent = titleText;
-
-    const body = document.createElement('p');
-    body.textContent = bodyText;
-
-    card.appendChild(title);
-    card.appendChild(body);
-
-    return card;
-}
-
-async function renderData(fetchDataFunction, titleText, containerSelector) {
-    const container = document.querySelector(containerSelector);
-    const data = await fetchDataFunction();
-
-    if (!data) {
-        return;
-    }
-
-    data.forEach(item => {
-        const bodyText = `Último valor: ${parseFloat(item.valor).toFixed(3)}% - (${item.data})`;
-        const card = createCard(titleText, bodyText);
-        container.appendChild(card);
-    });
-}
-
-async function renderDataIGPM() {
-    await renderData(fetchDataIGPM, "IGP-M", '.container');
-}
-
-async function renderDataCDI() {
-    await renderData(fetchDataCDI, "CDI - Diário", '.container');
-}
-
-async function renderDataCDIAnual() {
-    await renderData(fetchDataCDIAnual, "CDI - Anual", '.container');
-}
-
-renderDataIGPM();
-renderDataCDI();
-renderDataCDIAnual();
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-
-
-    const widgets = [
+const widgets = [
         {
             id: 'ticker-tape',
             url: 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js',
@@ -173,35 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 locale: "br"
             })
         }
-    ];
+];
 
-    const reloadWidgets = (theme) => {
-        widgets.forEach(widget => {
-            const container = document.getElementById(`${widget.id}-widget`);
-            container.innerHTML = '';
-            const script = document.createElement('script');
-            script.id = `${widget.id}-script`;
-            script.type = 'text/javascript';
-            script.src = widget.url;
-            script.async = true;
-            script.innerHTML = JSON.stringify(widget.getConfig(theme));
-            container.appendChild(script);
-        });
-    };
-
-    themeToggle.addEventListener('click', () => {
-        if (body.classList.contains('light-mode')) {
-            body.classList.remove('light-mode');
-            body.classList.add('dark-mode');
-            themeToggle.textContent = '🌙';
-            reloadWidgets('dark');
-        } else {
-            body.classList.remove('dark-mode');
-            body.classList.add('light-mode');
-            themeToggle.textContent = '☀️';
-            reloadWidgets('light');
-        }
-    });
-
-    reloadWidgets('light'); // Initial load with light theme
-});
+// export { widgets }; type = module:
+export{ widgets }
