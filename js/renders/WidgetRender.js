@@ -1,3 +1,4 @@
+import { renderDatas } from "/js/renders/CardRender.js";
 import { widgets } from "/js/setups/WidgetSetup.js";
 const reloadWidgets = (theme) => {
   widgets.forEach((widget) => {
@@ -11,6 +12,7 @@ const reloadWidgets = (theme) => {
     script.innerHTML = JSON.stringify(widget.getConfig(theme));
     container.appendChild(script);
   });
+  renderDatas();
 };
 
 export { reloadWidgets };

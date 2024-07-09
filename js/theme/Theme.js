@@ -1,4 +1,5 @@
 import { reloadWidgets } from "/js/renders/WidgetRender.js";
+
 const themeConfig = () =>
   document.addEventListener("DOMContentLoaded", () => {
     const themeToggle = document.getElementById("theme-toggle");
