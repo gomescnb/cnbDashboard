@@ -14,7 +14,7 @@ body {
   margin: 0;
   padding: 0;
   width: 100vw;
-  height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -92,6 +92,7 @@ main {
   grid-gap: var(--gap-size);
   align-items: center;
   height: calc(100% - 74px);
+  flex-grow: 1;
 }
 
 .theme-toggle {
