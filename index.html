@@ -1,54 +1,59 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard - Mercado</title>
-    <link rel="stylesheet" href="css/styles.css" />
-	<link rel="icon" type="image/png" href="assets/images/logoCNBwhite.png" />
-</head>
-<body class="light-mode">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dashboard - Mercado</title>
+        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="icon" type="image/png"
+            href="assets/images/logoCNBwhite.png" />
+    </head>
+    <body class="light-mode">
 
-	
-    <header style="display: flex; justify-content: space-between; align-items: center;">
-		<a id="site-logo" href="#" style="display: flex; align-items: center;">
-			<img src="assets/images/logoCNBwhite.png" alt="Logo" style="height: 50px;">
-			<!-- <span style="vertical-align: middle;">CNB-Dashboard</span> -->
-		</a>
-		<button class="theme-toggle" id="theme-toggle" >☀️</button>
-		
-	</header>
-		  
-    <nav id="ticker-tape">
-        <!-- TradingView Widget BEGIN -->
-        <div id="ticker-tape-widget" class="tradingview-widget-container">
-            <div class="tradingview-widget-container__widget"></div>
+        <header
+            style="display: flex; justify-content: space-between; align-items: center;">
+            <a id="site-logo" href="#"
+                style="display: flex; align-items: center;">
+                <img src="assets/images/logoCNBwhite.png" alt="Logo"
+                    style="height: 50px;">
+                <!-- <span style="vertical-align: middle;">CNB-Dashboard</span> -->
+            </a>
+            <button class="theme-toggle" id="theme-toggle">☀️</button>
+
+        </header>
+
+        <nav id="ticker-tape">
+            <!-- TradingView Widget BEGIN -->
+            <div id="ticker-tape-widget" class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+            </div>
+            <!-- TradingView Widget END -->
+        </nav>
+
+        <div class="container">
+
         </div>
-        <!-- TradingView Widget END -->
-    </nav>
 
-    <div class="container">
-        
-    </div>
+        <main>
 
-    <main>
+            <section id="symbol-info">
+                <!-- TradingView Widget BEGIN -->
+                <div id="symbol-info-widget"
+                    class="tradingview-widget-container"></div>
+                <!-- TradingView Widget END -->
+            </section>
+            <section id="advanced-chart">
+                <!-- TradingView Widget BEGIN -->
+                <div id="advanced-chart-widget"
+                    class="tradingview-widget-container"></div>
+                <!-- TradingView Widget END -->
+            </section>
 
-        <section id="symbol-info">
-            <!-- TradingView Widget BEGIN -->
-            <div id="symbol-info-widget" class="tradingview-widget-container"></div>
-            <!-- TradingView Widget END -->
-        </section>
-        <section id="advanced-chart">
-            <!-- TradingView Widget BEGIN -->
-            <div id="advanced-chart-widget" class="tradingview-widget-container"></div>
-            <!-- TradingView Widget END -->
-        </section>
-
-    </main>
-    <footer>
-        <p>Painel criado por Samuel Gomes Araujo</p>
-        <p>- DETIN-S - Ramal: 5332 -</p>
-    </footer>
-    <script src="js/Index.js" type="module"></script>
-</body>
+        </main>
+        <footer>
+            <p>Painel criado por Samuel Gomes Araujo</p>
+            <p>- DETIN-S - Ramal: 5332 -</p>
+        </footer>
+        <script src="js/Index.js" type="module"></script>
+    </body>
 </html>
