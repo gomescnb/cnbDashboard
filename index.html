@@ -7,9 +7,24 @@
         <link rel="stylesheet" href="css/styles.css" />
         <link rel="icon" type="image/png"
             href="assets/images/logoCNBwhite.png" />
+        <style>
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            z-index: 9999;
+        }
+    </style>
     </head>
-    <body class="light-mode">
 
+    <body class="light-mode">
         <header
             style="display: flex; justify-content: space-between; align-items: center;">
             <a id="site-logo" href="#"
@@ -19,7 +34,6 @@
                 <!-- <span style="vertical-align: middle;">CNB-Dashboard</span> -->
             </a>
             <button class="theme-toggle" id="theme-toggle">☀️</button>
-
         </header>
 
         <nav id="ticker-tape">
@@ -30,14 +44,14 @@
             <!-- TradingView Widget END -->
         </nav>
 
-        <div class="container">
+        <div class="loading" id="loading">Carregando...</div>
+        <div class="container" id="content" style="display: none;">
             <!-- Cards and graphs go here! -->
         </div>
-        <!-- Add this in your HTML file if not using a module bundler -->
+
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
         <main>
-
             <section id="symbol-info">
                 <!-- TradingView Widget BEGIN -->
                 <div id="symbol-info-widget"
@@ -50,8 +64,8 @@
                     class="tradingview-widget-container"></div>
                 <!-- TradingView Widget END -->
             </section>
-
         </main>
+
         <footer>
             <p>Painel criado por Samuel Gomes Araujo</p>
             <p>- DETIN-S - Ramal: 5332 -</p>

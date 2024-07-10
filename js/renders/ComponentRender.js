@@ -31,29 +31,69 @@ async function renderData(
   }
 }
 
-async function renderDatas() {
-  CardItems.forEach(async (element) => {
-    const container = document.querySelector(element.containerSelect);
-    let divId = element.id.substring(element.id, 4);
-    // console.log(divId);
-    if (divId === "card") {
-      let parentDiv = document.createElement("div");
-      divId = element.id.replace(divId, "");
-      parentDiv.setAttribute("id", divId);
-      container.appendChild(parentDiv);
-    } else {
-      divId = element.id.replace(divId + "t", "");
-    }
+// async function renderDatas() {
 
-    await renderData(
-      getAll(element.url),
-      element.title,
-      container,
-      element.percOrNot,
-      element.id,
-      divId
-    );
-  });
+//   CardItems.forEach(async (element) => {
+//     const container = document.querySelector(element.containerSelect);
+//     let divId = element.id.substring(element.id, 4);
+//     // console.log(divId);
+//     if (divId === "card") {
+//       let parentDiv = document.createElement("div");
+//       divId = element.id.replace(divId, "");
+//       parentDiv.setAttribute("id", divId);
+//       container.appendChild(parentDiv);
+//     } else {
+//       divId = element.id.replace(divId + "t", "");
+//     }
+
+//     await renderData(
+//       getAll(element.url),
+//       element.title,
+//       container,
+//       element.percOrNot,
+//       element.id,
+//       divId
+//     );
+//   });
+// }
+
+async function renderDatas() {
+  const loadingElement = document.getElementById("loading");
+  const contentElement = document.getElementById("content");
+
+  // Show the loading overlay
+  loadingElement.style.display = "flex";
+  contentElement.style.display = "none";
+
+  await Promise.all(
+    CardItems.map(async (element) => {
+      const container = document.querySelector(element.containerSelect);
+      let divId = element.id.substring(0, 4);
+      // console.log(divId);
+      if (divId === "card") {
+        let parentDiv = document.createElement("div");
+        divId = element.id.replace(divId, "");
+        parentDiv.setAttribute("id", divId);
+        container.appendChild(parentDiv);
+      } else {
+        divId = element.id.replace(divId + "t", "");
+      }
+
+      await renderData(
+        getAll(element.url),
+        element.title,
+        container,
+        element.percOrNot,
+        element.id,
+        divId
+      );
+    })
+  );
+  // wait 5 seconds before hiding the loading overlay:
+  setTimeout(() => {
+    loadingElement.style.display = "none";
+    contentElement.style.display = "flex";
+  }, 5000);
 }
 
 export { renderDatas };
