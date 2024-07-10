@@ -24,7 +24,7 @@ const CardItems = [
     url: `https://api.bcb.gov.br/dados/serie/bcdata.sgs.189/dados/?formato=json&dataInicial=${DataPassada1}`,
     containerSelect: ".container",
     percOrNot: "%",
-    id: "chartigpm",//"chart"+ "nome do objeto" serve pra fazer o toggle, se nao colocar os nomes de card e chart correspondentes, não vai funcionar!
+    id: "chartigpm", //"chart"+ "nome do objeto" serve pra fazer o toggle, se nao colocar os nomes de card e chart correspondentes, não vai funcionar!
   },
   {
     title: "Gráfico - CDI Anual",

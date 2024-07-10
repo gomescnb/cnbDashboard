@@ -11,10 +11,8 @@ async function renderData(
   id,
   divId
 ) {
-
   const data = await fetchDataFunction;
   const parentDiv = document.getElementById(divId);
-
 
   if (!data) {
     return;
@@ -43,11 +41,10 @@ async function renderDatas() {
       divId = element.id.replace(divId, "");
       parentDiv.setAttribute("id", divId);
       container.appendChild(parentDiv);
-    }else {
+    } else {
       divId = element.id.replace(divId + "t", "");
     }
-    console.log(divId);
-    
+
     await renderData(
       getAll(element.url),
       element.title,

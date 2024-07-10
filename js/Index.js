@@ -9,7 +9,6 @@ function expand(element, type, id) {
   element.classList.toggle("ativo" + type);
   let thisId = id.replace(type, "");
   let otherType = type === "card" ? "chart" : "card";
-  console.log(thisId);
 
   switch (type) {
     case "card":
