@@ -1,36 +1,25 @@
-import { getAll } from "/js/services/CardServices.js";
-import { CardItems } from "/js/setups/CardSetup.js";
+import { expand } from "/js/Index.js";
 
-function createCard(titleText, subtitleText, bodyText) {
-  const card = document.createElement("div");
-  card.classList.add("card");
-
-  const title = document.createElement("h2");
-  title.textContent = titleText;
-
-  const subtitle = document.createElement("h3");
-  subtitle.textContent = subtitleText;
-
-  const body = document.createElement("p");
-  body.textContent = bodyText;
-
-  card.appendChild(title);
-  card.appendChild(subtitle);
-  card.appendChild(body);
-
-  return card;
-}
-
-function createChart(container, labels, data, title) {
+function createChart(container, labels, data, title, id, parentDiv) {
   const chartContainer = document.createElement("div");
-  chartContainer.classList.add("chart-container");
 
+  const tooltiptext = document.createElement("span");
+  tooltiptext.classList.add("tooltiptext");
+  tooltiptext.innerHTML = "Clique para recolher";
+
+  chartContainer.classList.add("chart-container");
+  chartContainer.classList.add("desativadochart");
+  chartContainer.setAttribute("id", id);
+  chartContainer.addEventListener("click", () => {
+    expand(chartContainer, "chart", id);
+  });
   const canvas = document.createElement("canvas");
   chartContainer.appendChild(canvas);
-  container.appendChild(chartContainer);
+  chartContainer.appendChild(tooltiptext);
+  parentDiv.appendChild(chartContainer);
 
   const isDarkMode = document.body.classList.contains("dark-mode");
-  const textColor = isDarkMode ? "#fff" : "#000";
+  let textColor = isDarkMode ? "#fff" : "#000";
   const gridColor = isDarkMode
     ? "rgba(255, 255, 255, 0.1)"
     : "rgba(0, 0, 0, 0.1)";
@@ -106,42 +95,4 @@ function createChart(container, labels, data, title) {
   });
 }
 
-async function renderData(
-  fetchDataFunction,
-  titleText,
-  containerSelector,
-  percOrNot
-) {
-  const container = document.querySelector(containerSelector);
-  const data = await fetchDataFunction;
-
-  if (!data) {
-    return;
-  }
-
-  if (data.length >= 3) {
-    const labels = data.map((item) => item.data);
-    const values = data.map((item) => parseFloat(item.valor).toFixed(3));
-    createChart(container, labels, values, titleText);
-  } else {
-    data.forEach((item) => {
-      const subtitleText = item.data;
-      const bodyText = `${parseFloat(item.valor).toFixed(3)}${percOrNot}`;
-      const card = createCard(titleText, subtitleText, bodyText);
-      container.appendChild(card);
-    });
-  }
-}
-
-async function renderDatas() {
-  CardItems.forEach(async (element) => {
-    await renderData(
-      getAll(element.url),
-      element.title,
-      element.containerSelect,
-      element.percOrNot
-    );
-  });
-}
-
-export { renderDatas };
+export { createChart };

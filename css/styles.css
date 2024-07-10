@@ -154,7 +154,8 @@ body.dark-mode .theme-toggle {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   gap: 20px;
   padding: 10px;
   padding-left: 2%;
@@ -203,6 +204,7 @@ h3 {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   align-self: flex-start;
+  transition: all 0.2s ease-in-out;
 }
 
 body.dark-mode .chart-container {
@@ -218,4 +220,74 @@ body.dark-mode .chart-container {
 .chart-container canvas {
   width: 100% !important;
   height: 100% !important;
+}
+
+.ativocard {
+  display: block;
+  animation: fadeIncard 0.3s ease-in-out;
+}
+.desativadocard {
+  display: none;
+}
+.ativochart {
+  display: block;
+  animation: fadeInchart 0.3s ease-in-out;
+}
+.desativadochart {
+  display: none;
+}
+@keyframes fadeIncard {
+  from {
+    height: 250px;
+    width: 250px;
+    opacity: 0.7;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeInchart {
+  from {
+    height: 125px;
+    width: 125px;
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.card {
+  cursor: zoom-in;
+  user-select: none;
+  position: relative;
+}
+
+.chart-container {
+  cursor: zoom-out;
+  position: relative;
+}
+/* Tooltip container */
+
+/* Tooltip text */
+.card .tooltiptext,.chart-container .tooltiptext {
+  visibility: hidden;
+  width: 60px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #ffffffab;
+  text-align: center;
+  border-radius: 6px;
+  padding: 3px 0;
+  font-size: x-small;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 90%;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.card:hover .tooltiptext, .chart-container:hover .tooltiptext {
+  visibility: visible;
 }
