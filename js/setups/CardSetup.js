@@ -48,6 +48,20 @@ const CardItems = [
     id: "cardigpm",
   },
   {
+    title: "Câmbio - Dólar",
+    url: "https://api.bcb.gov.br/dados/serie/bcdata.sgs.10813/dados/ultimos/?formato=json",
+    containerSelect: ".container",
+    percOrNot: "",
+    id: "carddolar",
+  },
+  {
+    title: "Gráfico de Câmbio - Dólar",
+    url: `https://api.bcb.gov.br/dados/serie/bcdata.sgs.10813/dados/?formato=json&dataInicial=${DataPassada1}`,
+    containerSelect: ".container",
+    percOrNot: "",
+    id: "chartdolar",
+  },
+  {
     title: "CDI - Diário",
     url: "https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados/ultimos/?formato=json",
     containerSelect: ".container",
