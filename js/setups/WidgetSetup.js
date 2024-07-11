@@ -22,7 +22,7 @@ const widgets = [
     }),
   },
   {
-    id: "symbol-info",
+    id: "market-quotes",
     url: "https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js",
     getConfig: (theme) => ({
       // width: "100%",
@@ -66,7 +66,7 @@ const widgets = [
     }),
   },
   {
-    id: "advanced-chart",
+    id: "screener",
     url: "https://s3.tradingview.com/external-embedding/embed-widget-screener.js",
     getConfig: (theme) => ({
       // width: "100%",
@@ -80,10 +80,11 @@ const widgets = [
     }),
   },
   {
-    id: "company-profile",
+    id: "timeline",
     url: "https://s3.tradingview.com/external-embedding/embed-widget-timeline.js",
     getConfig: (theme) => ({
-      feedMode: "all_symbols",
+      feedMode: "market",
+      market: "forex",
       isTransparent: false,
       displayMode: "adaptive",
       // width: "100%",
@@ -94,5 +95,4 @@ const widgets = [
   },
 ];
 
-// export { widgets }; type = module:
 export { widgets };

@@ -22,7 +22,6 @@ function createChart(container, labels, data, title, id, parentDiv) {
   const darkColor = "#000";
   const lightGrid = "rgba(255, 255, 255, 0.1)";
   const darkGrid = "rgba(0, 0, 0, 0.1)";
-  console.log("RAMON");
 
   const myChart = new Chart(canvas, {
     type: "line",

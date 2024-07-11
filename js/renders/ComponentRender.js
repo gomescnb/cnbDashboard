@@ -1,4 +1,4 @@
-import { getAll } from "/js/services/CardServices.js";
+import { catchGetAll } from "/js/services/CardServices.js";
 import { CardItems } from "/js/setups/CardSetup.js";
 import { createChart } from "/js/components/ChartComponent.js";
 import { createCard } from "/js/components/CardComponent.js";
@@ -12,9 +12,8 @@ async function renderComponent(
   divId
 ) {
   const data = await fetchDataFunction;
-
   let parentDiv = document.getElementById(divId);
-
+  // console.log(data);
   if (!parentDiv) {
     let parentNewDiv = document.createElement("div");
     parentNewDiv.setAttribute("id", divId);
@@ -83,8 +82,10 @@ async function renderData() {
       } else {
         divId = element.id.replace(divId, "");
       }
+      const awaitGetAll = await catchGetAll(element.url);
+
       await renderComponent(
-        getAll(element.url),
+        awaitGetAll,
         element.title,
         container,
         element.percOrNot,
