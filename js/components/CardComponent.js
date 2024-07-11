@@ -1,4 +1,4 @@
-import { expand } from "/js/Index.js";
+import { expand } from "/js/components/shared/ExpandFunction.js";
 function createCard(titleText, subtitleText, bodyText, id) {
   const card = document.createElement("div");
   const tooltiptext = document.createElement("span");

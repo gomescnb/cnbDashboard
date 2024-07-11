@@ -3,7 +3,7 @@ import { CardItems } from "/js/setups/CardSetup.js";
 import { createChart } from "/js/components/ChartComponent.js";
 import { createCard } from "/js/components/CardComponent.js";
 
-async function renderData(
+async function renderComponent(
   fetchDataFunction,
   titleText,
   container,
@@ -12,7 +12,15 @@ async function renderData(
   divId
 ) {
   const data = await fetchDataFunction;
-  const parentDiv = document.getElementById(divId);
+
+  let parentDiv = document.getElementById(divId);
+
+  if (!parentDiv) {
+    let parentNewDiv = document.createElement("div");
+    parentNewDiv.setAttribute("id", divId);
+    container.appendChild(parentNewDiv);
+    parentDiv = document.getElementById(divId);
+  }
 
   if (!data) {
     return;
@@ -57,7 +65,7 @@ async function renderData(
 //   });
 // }
 
-async function renderDatas() {
+async function renderData() {
   const loadingElement = document.getElementById("loading");
   const contentElement = document.getElementById("content");
 
@@ -70,16 +78,12 @@ async function renderDatas() {
       const container = document.querySelector(element.containerSelect);
       let divId = element.id.substring(0, 4);
       // console.log(divId);
-      if (divId === "card") {
-        let parentDiv = document.createElement("div");
-        divId = element.id.replace(divId, "");
-        parentDiv.setAttribute("id", divId);
-        container.appendChild(parentDiv);
-      } else {
+      if (divId === "char") {
         divId = element.id.replace(divId + "t", "");
+      } else {
+        divId = element.id.replace(divId, "");
       }
-
-      await renderData(
+      await renderComponent(
         getAll(element.url),
         element.title,
         container,
@@ -88,12 +92,10 @@ async function renderDatas() {
         divId
       );
     })
-  );
-  // wait 5 seconds before hiding the loading overlay:
-  setTimeout(() => {
+  ).then(() => {
     loadingElement.style.display = "none";
     contentElement.style.display = "flex";
-  }, 5000);
+  });
 }
 
-export { renderDatas };
+export { renderData };

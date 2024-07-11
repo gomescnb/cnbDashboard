@@ -6,7 +6,7 @@ const DataHoje = new Date();
 // * @param {number} mesesAtras - O número de meses atrás da data atual.
 // * @return {string} A data calculada no formato "DD/MM/AAAA".
 //
-const mesesAtras = 12;
+const mesesAtras = 10;
 const DataPassada = (mesesAtras) => {
   const date = new Date(DataHoje);
   date.setMonth(date.getMonth() - mesesAtras);

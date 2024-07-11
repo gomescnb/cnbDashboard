@@ -1,4 +1,4 @@
-import { expand } from "/js/Index.js";
+import { expand } from "/js/components/shared/ExpandFunction.js";
 
 function createChart(container, labels, data, title, id, parentDiv) {
   const chartContainer = document.createElement("div");
