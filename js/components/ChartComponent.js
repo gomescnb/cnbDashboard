@@ -18,13 +18,13 @@ function createChart(container, labels, data, title, id, parentDiv) {
   chartContainer.appendChild(tooltiptext);
   parentDiv.appendChild(chartContainer);
 
-  const isDarkMode = document.body.classList.contains("dark-mode");
-  let textColor = isDarkMode ? "#fff" : "#000";
-  const gridColor = isDarkMode
-    ? "rgba(255, 255, 255, 0.1)"
-    : "rgba(0, 0, 0, 0.1)";
+  const lightColor = "#fff";
+  const darkColor = "#000";
+  const lightGrid = "rgba(255, 255, 255, 0.1)";
+  const darkGrid = "rgba(0, 0, 0, 0.1)";
+  console.log("RAMON");
 
-  new Chart(canvas, {
+  const myChart = new Chart(canvas, {
     type: "line",
     data: {
       labels: labels,
@@ -50,7 +50,7 @@ function createChart(container, labels, data, title, id, parentDiv) {
         title: {
           display: true,
           text: title,
-          color: textColor,
+          color: "#000",
           font: {
             size: 20,
             family:
@@ -68,7 +68,7 @@ function createChart(container, labels, data, title, id, parentDiv) {
           },
           ticks: {
             display: false,
-            color: textColor,
+            color: "#000",
             font: {
               size: 12,
               family:
@@ -78,11 +78,11 @@ function createChart(container, labels, data, title, id, parentDiv) {
         },
         y: {
           grid: {
-            color: gridColor,
+            color: "rgba(255, 255, 255, 0.1)",
           },
           ticks: {
             beginAtZero: true,
-            color: textColor,
+            color: "#000",
             font: {
               size: 12,
               family:
@@ -92,6 +92,24 @@ function createChart(container, labels, data, title, id, parentDiv) {
         },
       },
     },
+  });
+  document.getElementById("theme-toggle").addEventListener("click", () => {
+    const toDarkMode = myChart.options.scales.x.ticks.color === lightColor;
+    if (toDarkMode) {
+      myChart.options.scales.x.ticks.color = darkColor;
+      myChart.options.scales.y.ticks.color = darkColor;
+      myChart.options.plugins.title.color = darkColor;
+      // myBarChart.options.scales.x.grid.color = darkGrid;
+      // myBarChart.options.scales.y.grid.color = darkGrid;
+    } else {
+      myChart.options.scales.x.ticks.color = lightColor;
+      myChart.options.scales.y.ticks.color = lightColor;
+      myChart.options.plugins.title.color = lightColor;
+      // myBarChart.options.scales.x.grid.color = lightGrid;
+      // myBarChart.options.scales.y.grid.color = lightGrid;
+    }
+
+    myChart.update();
   });
 }
 
