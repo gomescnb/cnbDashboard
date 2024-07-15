@@ -310,8 +310,9 @@ body.dark-mode .chart-container {
 .navigation-moedas {
   position: absolute;
   top: 23px;
-  right: 50vw;
-  width: 200px;
+  left: 50vw;
+  transform: translateX(-50px);
+  width: 100px;
   height: 40px;
   border: none;
   background-color: #fff;

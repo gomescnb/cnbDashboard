@@ -79,20 +79,6 @@ const widgets = [
       locale: "br",
     }),
   },
-  {
-    id: "timeline",
-    url: "https://s3.tradingview.com/external-embedding/embed-widget-timeline.js",
-    getConfig: (theme) => ({
-      feedMode: "market",
-      market: "forex",
-      isTransparent: false,
-      displayMode: "adaptive",
-      // width: "100%",
-      height: "100%",
-      colorTheme: theme,
-      locale: "br",
-    }),
-  },
 ];
 
 export { widgets };

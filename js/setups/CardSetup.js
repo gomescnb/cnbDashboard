@@ -48,14 +48,14 @@ const CardItems = [
     id: "cardigpm",
   },
   {
-    title: "Câmbio - Dólar",
+    title: "USD - BRL",
     url: "https://api.bcb.gov.br/dados/serie/bcdata.sgs.10813/dados/ultimos/?formato=json",
     containerSelect: ".container",
     percOrNot: "",
     id: "carddolar",
   },
   {
-    title: "Gráfico de Câmbio - Dólar",
+    title: "Gráfico de USD - BRL",
     url: `https://api.bcb.gov.br/dados/serie/bcdata.sgs.10813/dados/?formato=json&dataInicial=${DataPassada1}`,
     containerSelect: ".container",
     percOrNot: "",
