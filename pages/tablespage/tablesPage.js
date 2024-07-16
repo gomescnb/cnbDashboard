@@ -7,30 +7,23 @@ async function getAll(url) {
     return await response.json();
   } catch (error) {
     console.error("Error fetching data:", error);
-
     return new Error("abobrinha");
   }
 }
+
 async function catchGetAll(url) {
   let responseGetAll = await getAll(url);
-  // console.log("antes do if" + responseGetAll);
   if (responseGetAll instanceof Error) {
     while (responseGetAll instanceof Error) {
       responseGetAll = await getAll(url);
     }
-    // console.log(responseGetAll);
   }
   return responseGetAll;
 }
-//data de hoje
+
 const DataHoje = new Date();
 
-//
-// * Calcula a data que está um certo número de meses atrás e a retorna no formato "DD/MM/AAAA".
-// * @param {number} mesesAtras - O número de meses atrás da data atual.
-// * @return {string} A data calculada no formato "DD/MM/AAAA".
-//
-const mesesAtras = 12;
+const mesesAtras = 25; // Fetch data from 25 months back to ensure we have enough data
 const DataPassada = (mesesAtras) => {
   const date = new Date(DataHoje);
   date.setMonth(date.getMonth() - mesesAtras);
@@ -56,63 +49,74 @@ async function populateTable() {
 
   const tableBody = document.getElementById("table-body");
 
-  let monthlyIndices = {};
+  // Parse the data into a more useful structure
+  const monthlyIndices = {};
   data.forEach((entry) => {
-    const dateParts = entry.data.split("/");
-    const month = parseInt(dateParts[1]);
-    const year = parseInt(dateParts[2]);
+    const [day, month, year] = entry.data.split("/").map(Number);
     const mesAno = `${month}-${year}`;
     const value = parseFloat(entry.valor);
 
     if (!monthlyIndices[mesAno]) {
-      monthlyIndices[mesAno] = { total: 0, count: 0, year: year };
+      monthlyIndices[mesAno] = { total: 0, count: 0 };
     }
 
     monthlyIndices[mesAno].total += value;
     monthlyIndices[mesAno].count++;
   });
 
-  const currentYear = DataHoje.getFullYear();
+  // Initialize accumulation structures
   const accumulatedYearly = {};
   const accumulated12Months = [];
+  let accumulatedIndexYear = 0;
 
-  // Loop from December to January
-  for (let month = 12; month >= 1; month--) {
-    const mesAno = `${month}-${currentYear}`;
+  // Loop through the last 12 months
+  for (let i = 12; i > 0; i--) {
+    const date = new Date(DataHoje);
+    date.setMonth(date.getMonth() - i);
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    const mesAno = `${month}-${year}`;
     const currentMonthData = monthlyIndices[mesAno] || { total: 0, count: 0 };
-    const monthlyIndex = currentMonthData.count > 0
-      ? (currentMonthData.total / currentMonthData.count).toFixed(4)
-      : 0;
+    const monthlyIndex =
+      currentMonthData.count > 0
+        ? (currentMonthData.total / currentMonthData.count).toFixed(4)
+        : "0.0000";
 
-    if (!accumulatedYearly[currentYear]) {
-      accumulatedYearly[currentYear] = { total: 0 };
+    // Accumulate indices for the year
+    if (!accumulatedYearly[year]) {
+      accumulatedYearly[year] = { total: 0 };
     }
 
-    accumulatedYearly[currentYear].total += parseFloat(monthlyIndex);
-    const accumulatedIndexYear = accumulatedYearly[currentYear].total.toFixed(4);
+    accumulatedYearly[year].total += parseFloat(monthlyIndex);
+    accumulatedIndexYear = accumulatedYearly[year].total.toFixed(4);
 
-    accumulated12Months.push(parseFloat(monthlyIndex));
+    // Add to the accumulated 12 months array
+    accumulated12Months.push({ month, year, value: parseFloat(monthlyIndex) });
+
+    // Calculate accumulated index for the last 12 months
     if (accumulated12Months.length > 12) {
       accumulated12Months.shift();
     }
     const accumulatedIndex12Months = accumulated12Months
-      .reduce((acc, curr) => acc + curr, 0)
+      .reduce((acc, curr) => acc + curr.value, 0)
       .toFixed(4);
 
+    // Get the month name
     const monthName = new Intl.DateTimeFormat("pt-BR", {
       month: "long",
-    }).format(new Date(0, month - 1));
+    }).format(new Date(year, month - 1));
 
+    // Create and append the table row
     const row = `<tr>
-          <td>${monthName.charAt(0).toUpperCase() + monthName.slice(1)}/${currentYear}</td>
-          <td>${String(monthlyIndex).replace(".", ",")}</td>
+          <td>${
+            monthName.charAt(0).toUpperCase() + monthName.slice(1)
+          }/${year}</td>
+          <td>${monthlyIndex.replace(".", ",")}</td>
           <td>${String(accumulatedIndexYear).replace(".", ",")}</td>
           <td>${String(accumulatedIndex12Months).replace(".", ",")}</td>
       </tr>`;
-
     tableBody.innerHTML += row;
   }
 }
 
 populateTable();
-

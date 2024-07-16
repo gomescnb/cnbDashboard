@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  fetch("https://cnb-dasboard-node.vercel.app/proxy")
+  fetch("https://cnbnode.vercel.app/proxy")
     .then((response) => response.text())
     .then((data) => {
       const rows = data.split("\n");
